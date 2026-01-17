@@ -1,0 +1,165 @@
+---
+title: An R Markdown document converted from "Copy_of_BasicReshaping_R.ipynb"
+output: html_document
+---
+
+Let get some data:
+
+```{r}
+fragile = read.csv("https://github.com/DACSS-Fundamentals/someData/raw/main/fragility_severalyears.csv")
+```
+
+A basic look:
+
+```{r}
+str(fragile)
+```
+
+We have data about the Index of Fragility (**Total**), and the other variables are its indicators (Cs,Es,Ps,Ss,and X1). The data is at the country level and presents the data for several years:
+
+```{r}
+# years available
+table(fragile$Year)
+```
+
+Take a look:
+
+```{r}
+head(fragile)
+```
+
+What **shape** does the table have? The presence of year in a column could make us think it is in a long shape.
+
+This is a LONG shape:
+
+```{r}
+head(fragile[,c('Country','Year','Total')])
+```
+
+```{r}
+# the same as the previous, but reordered to show repeated countries
+
+fragile[,c('Country','Year','Total')] |>
+  sort_by(~ list(Country,Year)) |> head(20)
+```
+
+You can get a summary, which *might not be* what you want:
+
+```{r}
+summary(fragile[,c('Country','Year','Total')])
+```
+
+If I subset the data for ONE year (2023), I get a WIDE SHAPE:
+
+```{r}
+fragile[fragile$Year==2023,]
+```
+
+You can get a summary here too, which may be what you want:
+
+```{r}
+summary(fragile[fragile$Year==2023,])
+```
+
+A summary without filtering might not be what you want:
+
+```{r}
+summary(fragile)
+```
+
+As you see, getting the stats you need requires the right shape.
+
+## From Long to Wide
+
+```{r}
+# notice you can use the data without subsetting nor filtering
+fragileWide=tidyr::pivot_wider( data=fragile[,c('Country','Year','Total')],# columns
+                                names_from = 'Year',  # values for NEW column
+                                values_from = 'Total', # values to use
+                                names_sort=T) # sort columns
+fragileWide
+```
+
+Notice that for the column to be sorted properly you need to add *names_sort*.
+
+### Plotting wide
+
+The wide format is useful in several cases. In general, it looks easy.
+
+In **base R**, you can use it directly for plotting:
+
+```{r}
+boxplot(fragileWide[,-1])
+```
+
+BUT in others such as GGPLOT, it is troublesome to use that format. You require code for each plot.
+
+```{r}
+library(ggplot2)
+base=ggplot(fragileWide)
+base+geom_boxplot(aes(x=as.ordered(2021),y=`2021`)) +
+     geom_boxplot(aes(x=as.ordered(2022),y=`2022`)) +
+     geom_boxplot(aes(x=as.ordered(2023),y=`2023`)) + labs(y='')
+```
+
+## From Wide to Long
+
+Here we turn it into LONG shape.
+We have  **pivot_longer** :
+
+```{r}
+fragileLong=tidyr::pivot_longer(data=fragileWide,
+                                cols=!Country, # columns that will be LONG (here NOT country)
+                                names_to = "Year", # current columns in wide will have THIS name in LONG format
+                                values_to = "FragilityIndex") # values will have this column name
+fragileLong
+```
+
+### Plotting Long
+
+GGPLOT  works very well with LONG shape:
+
+```{r}
+base = ggplot(data=fragileLong)
+base + geom_boxplot(aes(x=Year,y=FragilityIndex))
+```
+
+We can also use **base R**:
+
+```{r}
+boxplot(data=fragileLong,FragilityIndex~Year)
+```
+
+This is another example without years.
+
+Let me keep one year, and some wide-shaped columns:
+
+```{r}
+CVars_columns=c('C1_Security_Apparatus',	'C2_Factionalized_Elites',	'C3_Group_Grievance')
+
+#only one year
+fragile_CVars_wide=fragile[fragile$Year==2020,c('Country',CVars_columns)]
+
+fragile_CVars_wide
+```
+
+```{r}
+boxplot(fragile_CVars_wide[,-1],horizontal = T,las=2)
+```
+
+Its LONG version:
+
+```{r}
+fragile_CVars_long=tidyr::pivot_longer(fragile_CVars_wide,
+                                       !Country,
+                                       names_to = "CVars_name",
+                                       values_to = "CVars_value")
+fragile_CVars_long
+```
+
+```{r}
+# good for ggplot2
+base=ggplot(data=fragile_CVars_long)
+base+geom_boxplot(aes(x=CVars_name,y=CVars_value))
+```
+

@@ -1,0 +1,583 @@
+"Country","DataType","Values"
+"AFGHANISTAN","InfMortRate",42
+"AFGHANISTAN","MatMortRate",521
+"AFGHANISTAN","LifeExp",54.4
+"ALBANIA","InfMortRate",10.8
+"ALBANIA","MatMortRate",7
+"ALBANIA","LifeExp",79.9
+"ALGERIA","InfMortRate",18.6
+"ALGERIA","MatMortRate",62
+"ALGERIA","LifeExp",77.9
+"ANDORRA","InfMortRate",3.3
+"ANDORRA","MatMortRate",11
+"ANDORRA","LifeExp",83.8
+"ANGOLA","InfMortRate",46.1
+"ANGOLA","MatMortRate",183
+"ANGOLA","LifeExp",62.9
+"ANTIGUA AND BARBUDA","InfMortRate",13.3
+"ANTIGUA AND BARBUDA","MatMortRate",35
+"ANTIGUA AND BARBUDA","LifeExp",78.3
+"ARGENTINA","InfMortRate",7.4
+"ARGENTINA","MatMortRate",33
+"ARGENTINA","LifeExp",78.8
+"ARMENIA","InfMortRate",11.3
+"ARMENIA","MatMortRate",19
+"ARMENIA","LifeExp",76.7
+"AUSTRALIA","InfMortRate",3
+"AUSTRALIA","MatMortRate",2
+"AUSTRALIA","LifeExp",83.5
+"AUSTRIA","InfMortRate",3.2
+"AUSTRIA","MatMortRate",6
+"AUSTRIA","LifeExp",82.7
+"AZERBAIJAN","InfMortRate",10.7
+"AZERBAIJAN","MatMortRate",18
+"AZERBAIJAN","LifeExp",75.9
+"BAHAMAS THE","InfMortRate",9.2
+"BAHAMAS THE","MatMortRate",76
+"BAHAMAS THE","LifeExp",76.7
+"BAHRAIN","InfMortRate",9.6
+"BAHRAIN","MatMortRate",17
+"BAHRAIN","LifeExp",80.4
+"BANGLADESH","InfMortRate",22
+"BANGLADESH","MatMortRate",115
+"BANGLADESH","LifeExp",75.2
+"BARBADOS","InfMortRate",15.1
+"BARBADOS","MatMortRate",35
+"BARBADOS","LifeExp",79
+"BELARUS","InfMortRate",2.1
+"BELARUS","MatMortRate",1
+"BELARUS","LifeExp",74.7
+"BELGIUM","InfMortRate",3
+"BELGIUM","MatMortRate",4
+"BELGIUM","LifeExp",82.3
+"BELIZE","InfMortRate",11.3
+"BELIZE","MatMortRate",67
+"BELIZE","LifeExp",74.3
+"BENIN","InfMortRate",51.6
+"BENIN","MatMortRate",518
+"BENIN","LifeExp",63
+"BHUTAN","InfMortRate",23
+"BHUTAN","MatMortRate",47
+"BHUTAN","LifeExp",73.7
+"BOLIVIA","InfMortRate",22.1
+"BOLIVIA","MatMortRate",146
+"BOLIVIA","LifeExp",72.5
+"BOSNIA AND HERZEGOVINA","InfMortRate",3.8
+"BOSNIA AND HERZEGOVINA","MatMortRate",6
+"BOSNIA AND HERZEGOVINA","LifeExp",78.5
+"BOTSWANA","InfMortRate",27.8
+"BOTSWANA","MatMortRate",155
+"BOTSWANA","LifeExp",66.4
+"BRAZIL","InfMortRate",12.7
+"BRAZIL","MatMortRate",67
+"BRAZIL","LifeExp",76.3
+"BRUNEI","InfMortRate",9.8
+"BRUNEI","MatMortRate",36
+"BRUNEI","LifeExp",78.9
+"BULGARIA","InfMortRate",7.5
+"BULGARIA","MatMortRate",6
+"BULGARIA","LifeExp",76.1
+"BURKINA FASO","InfMortRate",48
+"BURKINA FASO","MatMortRate",242
+"BURKINA FASO","LifeExp",64.2
+"BURMA","InfMortRate",30.8
+"BURMA","MatMortRate",185
+"BURMA","LifeExp",70.3
+"BURUNDI","InfMortRate",35.3
+"BURUNDI","MatMortRate",392
+"BURUNDI","LifeExp",68.1
+"CABO VERDE","InfMortRate",21.9
+"CABO VERDE","MatMortRate",40
+"CABO VERDE","LifeExp",74.3
+"CAMBODIA","InfMortRate",27.2
+"CAMBODIA","MatMortRate",137
+"CAMBODIA","LifeExp",71.4
+"CAMEROON","InfMortRate",44.6
+"CAMEROON","MatMortRate",258
+"CAMEROON","LifeExp",64.2
+"CANADA","InfMortRate",3.8
+"CANADA","MatMortRate",12
+"CANADA","LifeExp",84.2
+"CENTRAL AFRICAN REPUBLIC","InfMortRate",79.3
+"CENTRAL AFRICAN REPUBLIC","MatMortRate",692
+"CENTRAL AFRICAN REPUBLIC","LifeExp",56.4
+"CHAD","InfMortRate",61.1
+"CHAD","MatMortRate",748
+"CHAD","LifeExp",60
+"CHILE","InfMortRate",4.5
+"CHILE","MatMortRate",10
+"CHILE","LifeExp",80.3
+"CHINA","InfMortRate",6
+"CHINA","MatMortRate",16
+"CHINA","LifeExp",78.7
+"COLOMBIA","InfMortRate",11.6
+"COLOMBIA","MatMortRate",59
+"COLOMBIA","LifeExp",74.9
+"COMOROS","InfMortRate",53.9
+"COMOROS","MatMortRate",179
+"COMOROS","LifeExp",67.8
+"CONGO DEMOCRATIC REPUBLIC OF THE","InfMortRate",55.8
+"CONGO DEMOCRATIC REPUBLIC OF THE","MatMortRate",427
+"CONGO DEMOCRATIC REPUBLIC OF THE","LifeExp",62.6
+"CONGO REPUBLIC OF THE","InfMortRate",29.9
+"CONGO REPUBLIC OF THE","MatMortRate",241
+"CONGO REPUBLIC OF THE","LifeExp",72.9
+"COSTA RICA","InfMortRate",6.3
+"COSTA RICA","MatMortRate",24
+"COSTA RICA","LifeExp",80.3
+"COTE D'IVOIRE","InfMortRate",52.3
+"COTE D'IVOIRE","MatMortRate",359
+"COTE D'IVOIRE","LifeExp",63.2
+"CROATIA","InfMortRate",3.4
+"CROATIA","MatMortRate",3
+"CROATIA","LifeExp",77.7
+"CUBA","InfMortRate",5.2
+"CUBA","MatMortRate",35
+"CUBA","LifeExp",80.1
+"CYPRUS","InfMortRate",7.9
+"CYPRUS","MatMortRate",14
+"CYPRUS","LifeExp",80.2
+"CZECHIA","InfMortRate",2.5
+"CZECHIA","MatMortRate",3
+"CZECHIA","LifeExp",78.6
+"DENMARK","InfMortRate",3.1
+"DENMARK","MatMortRate",4
+"DENMARK","LifeExp",82.1
+"DJIBOUTI","InfMortRate",44.3
+"DJIBOUTI","MatMortRate",162
+"DJIBOUTI","LifeExp",65.9
+"DOMINICA","InfMortRate",10.5
+"DOMINICA","MatMortRate",36
+"DOMINICA","LifeExp",78.7
+"DOMINICAN REPUBLIC","InfMortRate",20.8
+"DOMINICAN REPUBLIC","MatMortRate",124
+"DOMINICAN REPUBLIC","LifeExp",72.6
+"ECUADOR","InfMortRate",11.2
+"ECUADOR","MatMortRate",55
+"ECUADOR","LifeExp",74.9
+"EGYPT","InfMortRate",16.4
+"EGYPT","MatMortRate",17
+"EGYPT","LifeExp",75
+"EL SALVADOR","InfMortRate",10
+"EL SALVADOR","MatMortRate",39
+"EL SALVADOR","LifeExp",75.9
+"EQUATORIAL GUINEA","InfMortRate",76.9
+"EQUATORIAL GUINEA","MatMortRate",174
+"EQUATORIAL GUINEA","LifeExp",63.9
+"ERITREA","InfMortRate",39
+"ERITREA","MatMortRate",291
+"ERITREA","LifeExp",67.5
+"ESTONIA","InfMortRate",2
+"ESTONIA","MatMortRate",5
+"ESTONIA","LifeExp",78.4
+"ESWATINI","InfMortRate",38
+"ESWATINI","MatMortRate",118
+"ESWATINI","LifeExp",60.7
+"ETHIOPIA","InfMortRate",31.3
+"ETHIOPIA","MatMortRate",195
+"ETHIOPIA","LifeExp",67.7
+"FIJI","InfMortRate",9.4
+"FIJI","MatMortRate",30
+"FIJI","LifeExp",74.8
+"FINLAND","InfMortRate",1.9
+"FINLAND","MatMortRate",8
+"FINLAND","LifeExp",82.2
+"FRANCE","InfMortRate",3.1
+"FRANCE","MatMortRate",7
+"FRANCE","LifeExp",82.6
+"GABON","InfMortRate",26
+"GABON","MatMortRate",233
+"GABON","LifeExp",70.4
+"GAMBIA THE","InfMortRate",35
+"GAMBIA THE","MatMortRate",354
+"GAMBIA THE","LifeExp",68.4
+"GAZA STRIP","InfMortRate",14.2
+"GAZA STRIP","MatMortRate",16
+"GAZA STRIP","LifeExp",75.5
+"GEORGIA","InfMortRate",20.9
+"GEORGIA","MatMortRate",20
+"GEORGIA","LifeExp",72.8
+"GERMANY","InfMortRate",3
+"GERMANY","MatMortRate",4
+"GERMANY","LifeExp",81.9
+"GHANA","InfMortRate",30.5
+"GHANA","MatMortRate",234
+"GHANA","LifeExp",70.1
+"GREECE","InfMortRate",3.4
+"GREECE","MatMortRate",5
+"GREECE","LifeExp",81.9
+"GRENADA","InfMortRate",8.8
+"GRENADA","MatMortRate",48
+"GRENADA","LifeExp",76.3
+"GUATEMALA","InfMortRate",23.4
+"GUATEMALA","MatMortRate",94
+"GUATEMALA","LifeExp",73.5
+"GUINEA","InfMortRate",45.8
+"GUINEA","MatMortRate",494
+"GUINEA","LifeExp",64.6
+"GUINEA BISSAU","InfMortRate",45.1
+"GUINEA BISSAU","MatMortRate",505
+"GUINEA BISSAU","LifeExp",64.5
+"GUYANA","InfMortRate",20.6
+"GUYANA","MatMortRate",75
+"GUYANA","LifeExp",72.4
+"HAITI","InfMortRate",35
+"HAITI","MatMortRate",328
+"HAITI","LifeExp",65.6
+"HONDURAS","InfMortRate",15.4
+"HONDURAS","MatMortRate",47
+"HONDURAS","LifeExp",73.1
+"HUNGARY","InfMortRate",4.6
+"HUNGARY","MatMortRate",12
+"HUNGARY","LifeExp",76
+"ICELAND","InfMortRate",1.6
+"ICELAND","MatMortRate",3
+"ICELAND","LifeExp",84
+"INDIA","InfMortRate",30.5
+"INDIA","MatMortRate",80
+"INDIA","LifeExp",68.2
+"INDONESIA","InfMortRate",18.5
+"INDONESIA","MatMortRate",140
+"INDONESIA","LifeExp",73.6
+"IRAN","InfMortRate",9.7
+"IRAN","MatMortRate",16
+"IRAN","LifeExp",75.6
+"IRAQ","InfMortRate",18.3
+"IRAQ","MatMortRate",66
+"IRAQ","LifeExp",73.7
+"IRELAND","InfMortRate",3.2
+"IRELAND","MatMortRate",4
+"IRELAND","LifeExp",82
+"ISRAEL","InfMortRate",2.6
+"ISRAEL","MatMortRate",2
+"ISRAEL","LifeExp",83.1
+"ITALY","InfMortRate",3
+"ITALY","MatMortRate",6
+"ITALY","LifeExp",83
+"JAMAICA","InfMortRate",14.5
+"JAMAICA","MatMortRate",130
+"JAMAICA","LifeExp",76.3
+"JAPAN","InfMortRate",1.8
+"JAPAN","MatMortRate",3
+"JAPAN","LifeExp",85.2
+"JORDAN","InfMortRate",12.9
+"JORDAN","MatMortRate",31
+"JORDAN","LifeExp",76.5
+"KAZAKHSTAN","InfMortRate",7.9
+"KAZAKHSTAN","MatMortRate",10
+"KAZAKHSTAN","LifeExp",73.3
+"KENYA","InfMortRate",26.8
+"KENYA","MatMortRate",379
+"KENYA","LifeExp",70.4
+"KIRIBATI","InfMortRate",30.8
+"KIRIBATI","MatMortRate",80
+"KIRIBATI","LifeExp",68.5
+"KOREA NORTH","InfMortRate",14.7
+"KOREA NORTH","MatMortRate",67
+"KOREA NORTH","LifeExp",73.5
+"KOREA SOUTH","InfMortRate",2.2
+"KOREA SOUTH","MatMortRate",4
+"KOREA SOUTH","LifeExp",83.4
+"KUWAIT","InfMortRate",7
+"KUWAIT","MatMortRate",8
+"KUWAIT","LifeExp",79.6
+"KYRGYZSTAN","InfMortRate",24
+"KYRGYZSTAN","MatMortRate",42
+"KYRGYZSTAN","LifeExp",72.9
+"LAOS","InfMortRate",34.2
+"LAOS","MatMortRate",112
+"LAOS","LifeExp",69
+"LATVIA","InfMortRate",2.4
+"LATVIA","MatMortRate",19
+"LATVIA","LifeExp",76.4
+"LEBANON","InfMortRate",7.3
+"LEBANON","MatMortRate",15
+"LEBANON","LifeExp",79.2
+"LESOTHO","InfMortRate",52.2
+"LESOTHO","MatMortRate",478
+"LESOTHO","LifeExp",60.2
+"LIBERIA","InfMortRate",55.2
+"LIBERIA","MatMortRate",628
+"LIBERIA","LifeExp",61.6
+"LIBYA","InfMortRate",10.4
+"LIBYA","MatMortRate",59
+"LIBYA","LifeExp",77.7
+"LITHUANIA","InfMortRate",2.5
+"LITHUANIA","MatMortRate",8
+"LITHUANIA","LifeExp",76.1
+"LUXEMBOURG","InfMortRate",3.1
+"LUXEMBOURG","MatMortRate",12
+"LUXEMBOURG","LifeExp",83.4
+"MADAGASCAR","InfMortRate",38.4
+"MADAGASCAR","MatMortRate",445
+"MADAGASCAR","LifeExp",68.8
+"MALAWI","InfMortRate",28.9
+"MALAWI","MatMortRate",225
+"MALAWI","LifeExp",73
+"MALAYSIA","InfMortRate",6.3
+"MALAYSIA","MatMortRate",26
+"MALAYSIA","LifeExp",76.6
+"MALDIVES","InfMortRate",23.7
+"MALDIVES","MatMortRate",32
+"MALDIVES","LifeExp",77.4
+"MALI","InfMortRate",55.8
+"MALI","MatMortRate",367
+"MALI","LifeExp",63.2
+"MALTA","InfMortRate",4.6
+"MALTA","MatMortRate",8
+"MALTA","LifeExp",83.6
+"MARSHALL ISLANDS","InfMortRate",20.1
+"MARSHALL ISLANDS","MatMortRate",155
+"MARSHALL ISLANDS","LifeExp",75.2
+"MAURITANIA","InfMortRate",29.9
+"MAURITANIA","MatMortRate",381
+"MAURITANIA","LifeExp",65.9
+"MAURITIUS","InfMortRate",11.4
+"MAURITIUS","MatMortRate",66
+"MAURITIUS","LifeExp",75.4
+"MEXICO","InfMortRate",12.3
+"MEXICO","MatMortRate",42
+"MEXICO","LifeExp",74.6
+"MICRONESIA FEDERATED STATES OF","InfMortRate",20.4
+"MICRONESIA FEDERATED STATES OF","MatMortRate",129
+"MICRONESIA FEDERATED STATES OF","LifeExp",75
+"MOLDOVA","InfMortRate",13.5
+"MOLDOVA","MatMortRate",19
+"MOLDOVA","LifeExp",70.1
+"MONACO","InfMortRate",1.7
+"MONACO","MatMortRate",5
+"MONACO","LifeExp",89.8
+"MONGOLIA","InfMortRate",8.6
+"MONGOLIA","MatMortRate",41
+"MONGOLIA","LifeExp",71.9
+"MONTENEGRO","InfMortRate",3.1
+"MONTENEGRO","MatMortRate",6
+"MONTENEGRO","LifeExp",78.2
+"MOROCCO","InfMortRate",17.8
+"MOROCCO","MatMortRate",70
+"MOROCCO","LifeExp",74.2
+"MOZAMBIQUE","InfMortRate",56.7
+"MOZAMBIQUE","MatMortRate",82
+"MOZAMBIQUE","LifeExp",58.3
+"NAMIBIA","InfMortRate",27.1
+"NAMIBIA","MatMortRate",139
+"NAMIBIA","LifeExp",65.9
+"NAURU","InfMortRate",7.5
+"NAURU","MatMortRate",273
+"NAURU","LifeExp",68.6
+"NEPAL","InfMortRate",23.4
+"NEPAL","MatMortRate",142
+"NEPAL","LifeExp",73
+"NETHERLANDS","InfMortRate",3.6
+"NETHERLANDS","MatMortRate",4
+"NETHERLANDS","LifeExp",81.9
+"NEW ZEALAND","InfMortRate",3.3
+"NEW ZEALAND","MatMortRate",7
+"NEW ZEALAND","LifeExp",82.9
+"NICARAGUA","InfMortRate",14.1
+"NICARAGUA","MatMortRate",60
+"NICARAGUA","LifeExp",74.7
+"NIGER","InfMortRate",63
+"NIGER","MatMortRate",350
+"NIGER","LifeExp",60.9
+"NIGERIA","InfMortRate",65.6
+"NIGERIA","MatMortRate",993
+"NIGERIA","LifeExp",62.2
+"NORTH MACEDONIA","InfMortRate",6.8
+"NORTH MACEDONIA","MatMortRate",3
+"NORTH MACEDONIA","LifeExp",77.3
+"NORWAY","InfMortRate",1.8
+"NORWAY","MatMortRate",1
+"NORWAY","LifeExp",82.9
+"OMAN","InfMortRate",13.6
+"OMAN","MatMortRate",13
+"OMAN","LifeExp",77.4
+"PAKISTAN","InfMortRate",50.3
+"PAKISTAN","MatMortRate",155
+"PAKISTAN","LifeExp",70.3
+"PALAU","InfMortRate",10.6
+"PALAU","MatMortRate",89
+"PALAU","LifeExp",75.2
+"PANAMA","InfMortRate",13.2
+"PANAMA","MatMortRate",37
+"PANAMA","LifeExp",79.2
+"PAPUA NEW GUINEA","InfMortRate",31.3
+"PAPUA NEW GUINEA","MatMortRate",189
+"PAPUA NEW GUINEA","LifeExp",70.1
+"PARAGUAY","InfMortRate",21.4
+"PARAGUAY","MatMortRate",58
+"PARAGUAY","LifeExp",78.8
+"PERU","InfMortRate",10.6
+"PERU","MatMortRate",51
+"PERU","LifeExp",68.9
+"PHILIPPINES","InfMortRate",18.5
+"PHILIPPINES","MatMortRate",84
+"PHILIPPINES","LifeExp",70.8
+"POLAND","InfMortRate",4.6
+"POLAND","MatMortRate",2
+"POLAND","LifeExp",76.7
+"PORTUGAL","InfMortRate",2.4
+"PORTUGAL","MatMortRate",15
+"PORTUGAL","LifeExp",81.9
+"PUERTO RICO","InfMortRate",5.7
+"PUERTO RICO","MatMortRate",11
+"PUERTO RICO","LifeExp",82.1
+"QATAR","InfMortRate",6.2
+"QATAR","MatMortRate",4
+"QATAR","LifeExp",80.3
+"ROMANIA","InfMortRate",5.3
+"ROMANIA","MatMortRate",12
+"ROMANIA","LifeExp",76.9
+"RUSSIA","InfMortRate",6.4
+"RUSSIA","MatMortRate",9
+"RUSSIA","LifeExp",72.3
+"RWANDA","InfMortRate",27.4
+"RWANDA","MatMortRate",229
+"RWANDA","LifeExp",66.6
+"SAINT KITTS AND NEVIS","InfMortRate",7.9
+"SAINT KITTS AND NEVIS","MatMortRate",74
+"SAINT KITTS AND NEVIS","LifeExp",77.6
+"SAINT LUCIA","InfMortRate",11.3
+"SAINT LUCIA","MatMortRate",44
+"SAINT LUCIA","LifeExp",79.4
+"SAINT VINCENT AND THE GRENADINES","InfMortRate",12
+"SAINT VINCENT AND THE GRENADINES","MatMortRate",56
+"SAINT VINCENT AND THE GRENADINES","LifeExp",77.2
+"SAMOA","InfMortRate",17.2
+"SAMOA","MatMortRate",101
+"SAMOA","LifeExp",75.7
+"SAN MARINO","InfMortRate",6.1
+"SAN MARINO","MatMortRate",8
+"SAN MARINO","LifeExp",84.2
+"SAO TOME AND PRINCIPE","InfMortRate",41.7
+"SAO TOME AND PRINCIPE","MatMortRate",75
+"SAO TOME AND PRINCIPE","LifeExp",67.7
+"SAUDI ARABIA","InfMortRate",11.4
+"SAUDI ARABIA","MatMortRate",7
+"SAUDI ARABIA","LifeExp",77.2
+"SENEGAL","InfMortRate",30.4
+"SENEGAL","MatMortRate",237
+"SENEGAL","LifeExp",70.6
+"SERBIA","InfMortRate",4.4
+"SERBIA","MatMortRate",11
+"SERBIA","LifeExp",75.3
+"SEYCHELLES","InfMortRate",10
+"SEYCHELLES","MatMortRate",42
+"SEYCHELLES","LifeExp",76.6
+"SIERRA LEONE","InfMortRate",70.1
+"SIERRA LEONE","MatMortRate",354
+"SIERRA LEONE","LifeExp",59.4
+"SLOVAKIA","InfMortRate",5
+"SLOVAKIA","MatMortRate",4
+"SLOVAKIA","LifeExp",77.2
+"SLOVENIA","InfMortRate",1.8
+"SLOVENIA","MatMortRate",3
+"SLOVENIA","LifeExp",82.2
+"SOLOMON ISLANDS","InfMortRate",18.6
+"SOLOMON ISLANDS","MatMortRate",123
+"SOLOMON ISLANDS","LifeExp",77.2
+"SOMALIA","InfMortRate",81.5
+"SOMALIA","MatMortRate",563
+"SOMALIA","LifeExp",56.5
+"SOUTH AFRICA","InfMortRate",19.7
+"SOUTH AFRICA","MatMortRate",118
+"SOUTH AFRICA","LifeExp",71.9
+"SOUTH SUDAN","InfMortRate",58.6
+"SOUTH SUDAN","MatMortRate",692
+"SOUTH SUDAN","LifeExp",60.3
+"SPAIN","InfMortRate",2.4
+"SPAIN","MatMortRate",3
+"SPAIN","LifeExp",83
+"SRI LANKA","InfMortRate",6.8
+"SRI LANKA","MatMortRate",18
+"SRI LANKA","LifeExp",76.8
+"SUDAN","InfMortRate",39.7
+"SUDAN","MatMortRate",256
+"SUDAN","LifeExp",67.8
+"SURINAME","InfMortRate",29.3
+"SURINAME","MatMortRate",84
+"SURINAME","LifeExp",72.7
+"SWEDEN","InfMortRate",2.2
+"SWEDEN","MatMortRate",4
+"SWEDEN","LifeExp",82.9
+"SWITZERLAND","InfMortRate",3
+"SWITZERLAND","MatMortRate",5
+"SWITZERLAND","LifeExp",83.9
+"SYRIA","InfMortRate",14.7
+"SYRIA","MatMortRate",20
+"SYRIA","LifeExp",74.8
+"TAJIKISTAN","InfMortRate",20.3
+"TAJIKISTAN","MatMortRate",14
+"TAJIKISTAN","LifeExp",71.9
+"TANZANIA","InfMortRate",28.4
+"TANZANIA","MatMortRate",276
+"TANZANIA","LifeExp",70.8
+"THAILAND","InfMortRate",6.2
+"THAILAND","MatMortRate",34
+"THAILAND","LifeExp",78.2
+"TIMOR LESTE","InfMortRate",41.9
+"TIMOR LESTE","MatMortRate",192
+"TIMOR LESTE","LifeExp",70.5
+"TOGO","InfMortRate",34.5
+"TOGO","MatMortRate",349
+"TOGO","LifeExp",72.1
+"TONGA","InfMortRate",11.5
+"TONGA","MatMortRate",67
+"TONGA","LifeExp",78
+"TRINIDAD AND TOBAGO","InfMortRate",14.7
+"TRINIDAD AND TOBAGO","MatMortRate",54
+"TRINIDAD AND TOBAGO","LifeExp",76.5
+"TUNISIA","InfMortRate",10.6
+"TUNISIA","MatMortRate",36
+"TUNISIA","LifeExp",77.3
+"TURKEY","InfMortRate",17.9
+"TURKEY","MatMortRate",15
+"TURKEY","LifeExp",76.7
+"TURKMENISTAN","InfMortRate",35
+"TURKMENISTAN","MatMortRate",5
+"TURKMENISTAN","LifeExp",72.4
+"TUVALU","InfMortRate",27.2
+"TUVALU","MatMortRate",170
+"TUVALU","LifeExp",69
+"UGANDA","InfMortRate",27.5
+"UGANDA","MatMortRate",170
+"UGANDA","LifeExp",69.7
+"UKRAINE","InfMortRate",8.4
+"UKRAINE","MatMortRate",15
+"UKRAINE","LifeExp",70.5
+"UNITED ARAB EMIRATES","InfMortRate",4.9
+"UNITED ARAB EMIRATES","MatMortRate",3
+"UNITED ARAB EMIRATES","LifeExp",79.9
+"UNITED KINGDOM","InfMortRate",3.7
+"UNITED KINGDOM","MatMortRate",8
+"UNITED KINGDOM","LifeExp",82.2
+"UNITED STATES","InfMortRate",5
+"UNITED STATES","MatMortRate",17
+"UNITED STATES","LifeExp",80.9
+"URUGUAY","InfMortRate",6.9
+"URUGUAY","MatMortRate",15
+"URUGUAY","LifeExp",78.9
+"UZBEKISTAN","InfMortRate",17.6
+"UZBEKISTAN","MatMortRate",26
+"UZBEKISTAN","LifeExp",76.2
+"VANUATU","InfMortRate",13.4
+"VANUATU","MatMortRate",100
+"VANUATU","LifeExp",75.7
+"VENEZUELA","InfMortRate",13.6
+"VENEZUELA","MatMortRate",227
+"VENEZUELA","LifeExp",74.5
+"VIETNAM","InfMortRate",13.8
+"VIETNAM","MatMortRate",48
+"VIETNAM","LifeExp",76.1
+"WEST BANK","InfMortRate",14.2
+"WEST BANK","MatMortRate",16
+"WEST BANK","LifeExp",76.5
+"YEMEN","InfMortRate",42.4
+"YEMEN","MatMortRate",118
+"YEMEN","LifeExp",68.2
+"ZAMBIA","InfMortRate",30.1
+"ZAMBIA","MatMortRate",85
+"ZAMBIA","LifeExp",66.9
+"ZIMBABWE","InfMortRate",32.8
+"ZIMBABWE","MatMortRate",358
+"ZIMBABWE","LifeExp",67.2

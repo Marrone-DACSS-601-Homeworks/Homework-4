@@ -1,0 +1,134 @@
+---
+title: An R Markdown document converted from "Copy_of_Aggregating_R.ipynb"
+output: html_document
+---
+
+Let's bring some data of COVID from Brazil:
+
+```{r}
+
+linkCovid="https://github.com/DACSS-Fundamentals/someData/raw/main/brazilCovid2022.csv"
+
+covid=read.csv(linkCovid)
+```
+
+Now, check the data available:
+
+```{r}
+str(covid)
+```
+
+Let's take a look:
+
+```{r}
+head(covid,20)
+```
+
+Let's format the dates, and get date details:
+
+```{r}
+covid$data=as.POSIXct(covid$data, format="%Y-%m-%d")
+covid$day=format(covid$data,"%d")
+covid$year=format(covid$data,"%Y")
+covid$month=format(covid$data,"%m")
+
+## see
+head(covid)
+```
+
+Let's find out about  months available:
+
+```{r}
+unique(covid$month)
+```
+
+So, we have data from January to July 2022.
+Let's find out: **count of new positive cases per month**:
+
+```{r}
+sum(covid$casosNovos[covid$month=='07'])
+```
+
+```{r}
+sum(covid$casosNovos[covid$month=='06'])
+```
+
+```{r}
+sum(covid$casosNovos[covid$month=='05'])
+```
+
+...
+
+```{r}
+sum(covid$casosNovos[covid$month=='01'])
+```
+
+We use **aggregation** to simplify the previous steps:
+
+```{r}
+# sum of cases by month
+casesSumByMonth=aggregate(data=covid,casosNovos~month,sum)
+casesSumByMonth
+```
+
+**AGGREGATING** capabilities allow us to produce useful output with few code:
+
+* **The groupings**:
+
+In the last example, _month_ was the **grouping** variable. We can have more the one of those:
+
+```{r}
+# sum of cases by estado and week
+casesSumByStateAndMonth=aggregate(data=covid,casosNovos~estado + month,sum)
+casesSumByStateAndMonth
+```
+
+* **The function to apply**:
+
+We can have more than one function:
+
+```{r}
+# sum and mean of cases by estado and week
+casesSumAndMeanByStateAndWeek=aggregate(data=covid,casosNovos~estado + semanaEpi,
+          function(x) c(mean = mean(x), sum = sum(x) ) )
+
+
+head(casesSumAndMeanByStateAndWeek,30)
+```
+
+...or better:
+
+```{r}
+casesSumAndMeanByStateAndWeek=do.call(data.frame, aggregate(data=covid,casosNovos~estado + semanaEpi,
+function(x) c(mean = mean(x), sum = sum(x) ) ))
+head(casesSumAndMeanByStateAndWeek,30)
+```
+
+* **The variables transformed**:
+
+We can apply the function to more than one variable:
+
+```{r}
+# sum of cases and deaths by estado
+
+CasesAndDeathsByState=aggregate(data=covid,
+                                cbind(casosNovos,obitosNovos)~estado,
+                                sum)
+
+head(CasesAndDeathsByState,30)
+```
+
+* Function **according** to variable
+
+The function can vary according to variable.  In this case, using **dplyr** is needed:
+
+```{r}
+library(dplyr)
+covid |>
+  group_by(month) |>
+  summarize(casosNovos_VAR = var(casosNovos),
+            casosNovos_SD = sd(casosNovos),
+            obitosNovos_Median = median(obitosNovos),
+            obitosNovos_Mean = mean(obitosNovos))
+```
+

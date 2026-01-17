@@ -1,0 +1,90 @@
+---
+title: "Index"
+output:
+  html_document:
+    df_print: paged
+---
+
+# Exercise 1 - Merging
+
+```{r}
+# import all the data
+library(readr) # code asks to use the package 'readr' to important the following csv files
+
+Infant_Mortality_Formatted <- read_csv("~/Desktop/GitHub Repos/Homework-3/Infant_Mortality_Formatted.csv") # code imports and reads the data frame 'Infant_Mortality_Formatted' 
+View(Infant_Mortality_Formatted) # code asks to view the data frame 'Infant_Mortality_Formatted'
+
+Life_Expectancy_Formatted <- read_csv("~/Desktop/GitHub Repos/Homework-3/Life_Expectancy_Formatted.csv") # code imports and reads the data frame 'Life_Expectancy_Formatted' 
+View(Life_Expectancy_Formatted) # code asks to view the data frame 'Life_Expectancy_Formatted'
+
+Maternal_Mortality_Formatted <- read_csv("~/Desktop/GitHub Repos/Homework-3/Maternal_Mortality_Formatted.csv") # code imports and reads the data frame 'Maternal_Mortality_Formatted' 
+View(Maternal_Mortality_Formatted) # code asks to view the data frame 'Maternal_Mortality_Formatted'
+```
+
+```{r}
+# need to change the names of these two columns because they repeated and fix the space in a column name
+names(Maternal_Mortality_Formatted)[2]=c("MatMortRate") # code changes the name of column two in 'Maternal_Mortality_Formatted' to 'MatMortRate'
+names(Infant_Mortality_Formatted)[2]=c("InfMortRate") # code changes the name of column two in 'Infant_Mortality_Formatted' to 'InfMortRate'
+names(Life_Expectancy_Formatted)[2]=c("LifeExp") # code changes the name of column two in 'Life_Expectancy_Formatted' to LifeExp to not have spaces
+```
+
+```{r}
+# Left join Infant Mortality and Life Expectancy data frames then inner join the new data frame with Maternal Mortality data frame
+InfMortAndLifeExp=merge(Infant_Mortality_Formatted,Life_Expectancy_Formatted,all.x=TRUE) # code uses left join to merge 'Infant_Mortality_Formatted' and 'Life_Expectancy_Formatted' keeping all the rows from 'infant_mortality_formatted'
+TwoMortAndExp=merge(InfMortAndLifeExp,Maternal_Mortality_Formatted) # code uses left join to merge 'InfMortAndLifeExp' and 'Maternal_Mortality_Formatted'
+```
+
+```{r}
+# saving merged file as a csv
+write.csv(TwoMortAndExp,"TwoMortAndExp_Merged.csv", row.names = FALSE) # code is saving the data frame as a csv file
+TwoMortAndExpCSV=read.csv("TwoMortAndExp_Merged.csv") # code is reading the csv file
+str(TwoMortAndExpCSV) # code is checking the data types of the csv file
+```
+
+# Exercise 2 - Aggregating
+
+```{r}
+# import the merged data frame
+library(readr) # code asks to use the package 'readr' to important the following csv files
+TwoMortAndExp_Merged <- read_csv("TwoMortAndExp_Merged.csv") # code imports and reads the data frame 'TwoMortAndExp_Merged'
+View(TwoMortAndExp_Merged) # code asks to view the data frame 'TwoMortAndExp_Merged'
+```
+
+
+```{r}
+# mean of variable by region
+MatMortRateMeanByRegion=do.call(data.frame, aggregate(data=TwoMortAndExp_Merged,MatMortRate~Region,
+function(x) c(mean = mean(x) ) ))  # code requests to aggregate the mean for the 'MatMortRate' by region in the data frame 'TwoMoreAndExp_Merged' by creating a new data frame named 'MatMortRateMeanByRegion' with the Region column and a new 
+head(MatMortRateMeanByRegion) # code asks to see the first six rows of the data frame 'MatMortRateMeanByRegion'
+```
+
+```{r}
+# saving merged file as a csv
+write.csv(MatMortRateMeanByRegion,"MatMortRateMeanByRegion_Aggregated.csv", row.names = FALSE) # code is saving the data frame as a csv file
+MatMortRateMeanByRegionCSV=read.csv("MatMortRateMeanByRegion_Aggregated.csv") # code is reading the csv file
+str(MatMortRateMeanByRegionCSV) # code is checking the data types of the csv file
+```
+
+# Exercise 3 - Reshaping
+
+```{r}
+# import the merged data frame
+library(readr) # code asks to use the package 'readr' to important the following csv files
+TwoMortAndExp_Merged <- read_csv("TwoMortAndExp_Merged.csv") # code imports and reads the data frame 'TwoMortAndExp_Merged'
+View(TwoMortAndExp_Merged) # code asks to view the data frame 'TwoMortAndExp_Merged'
+```
+
+```{r}
+TwoMortandExp_Long=tidyr::pivot_longer(data=TwoMortAndExp_Merged[,c('Country','InfMortRate','MatMortRate','LifeExp')]
+                                       ,cols = !Country, # code asks to use the 'tidyr' package to reshape the wide format to a long format, exclude the 'region' column and name it 'TowMortandExp_Long'
+                                       names_to ="DataType", # code asks to rename the new column 'DataType'
+                                       values_to = "Values") # code asks to put the values from the three data columns into a column labeled 'Values'
+TwoMortandExp_Long # code asks to see the new data frame
+```
+
+```{r}
+# saving merged file as a csv
+write.csv(TwoMortandExp_Long,"TwoMortandExp_Long.csv", row.names = FALSE) # code is saving the data frame as a csv file
+TwoMortandExp_LongCSV=read.csv("TwoMortandExp_Long.csv") # code is reading the csv file
+str(TwoMortandExp_LongCSV) # code is checking the data types of the csv file
+```

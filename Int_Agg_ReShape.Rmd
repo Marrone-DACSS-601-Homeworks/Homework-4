@@ -1,0 +1,535 @@
+---
+title: An R Markdown document converted from "Copy_of_Integrating_R.ipynb"
+output: html_document
+---
+
+# Data Integration in R
+
+**PREVIOUSLY**:
+
+```{r}
+# do this FIRST, just once
+install.packages('rio') # code requests to install the package rio
+```
+
+## I. Concatenation
+
+
+We will work with these tables to understand the concatenation of data frames:
+
+
+```{r}
+sheet_html <- '<iframe width="50%" height="200" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQzyv9scQAKGdUE9vLS6FAtuigyajkmLkXOzc-svS31gYGVbn0cBBfsGZi2LiomymLpxXNtn3TqTz8y/pubhtml?widget=true&amp;headers=false"></iframe>' # code names the data pulled 'sheet_htmal'
+IRdisplay::display_html(sheet_html) # code displays an image from the data 
+```
+
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQzyv9scQAKGdUE9vLS6FAtuigyajkmLkXOzc-svS31gYGVbn0cBBfsGZi2LiomymLpxXNtn3TqTz8y/pubhtml?widget=true&amp;headers=false" width="100%" height="600"></iframe>
+
+```{r}
+link="https://github.com/DACSS-Fundamentals/someData/raw/main/concat_example.xlsx" # code requests to import the links to the data
+```
+
+```{r}
+df1 <- rio::import(link, which = "df1") # adds data from the link and names it 'df1'
+df2 <- rio::import(link, which = "df2") # adds data from the link and names it 'df2'
+df3 <- rio::import(link, which = "df3") # adds data from the link and names it 'df3' 
+df4 <- rio::import(link, which = "df4") # adds data from the link and names it 'df4'
+```
+
+```{r}
+df1 # doesn't show up well because the structure isn't there yet, there's an extra first column
+```
+
+```{r}
+# reset index
+row.names(df1)=df1[,1] # code asks for the row names of 'df1' to be the labels in the first column
+df1=df1[,-1] # code asks to remove the first column that was the error
+df1 # code asks to see 'df1'
+```
+
+Each data frame will have a particular set of row indices.
+
+```{r}
+row.names(df2) <- df2[, 1] # code asks for the row names of 'df2' to be the labels in the first column
+df2 <- df2[, -1] # code asks to get rid of the first column that was the error column
+
+row.names(df3) <- df3[, 1] # code asks for the row names of 'df3' to be the labels in the first column
+df3 <- df3[, -1] # code asks to get rid of the first column that was the error column
+
+row.names(df4) <- df4[, 1] # code asks for the row names of 'df4' to be the labels in the first column
+df4 <- df4[, -1] # code asks to get rid of the first column that was the error column
+```
+
+### I.1. Vertical Concatenation
+
+Same Column Names, one on top of the other:
+
+```{r}
+# do.call(rbind, list(df1,df2,df3))
+rbind(df1,df2,df3) # code concatenates 'df1,' 'df2,' and 'df3' vertically by putting one data frame on top of the other
+```
+
+### I.2. Horizontal Concatenation
+
+Same Row Names, one next to the other:
+
+```{r}
+cbind(df1,df4) # code concatenates 'df1' and 'df4' horizontally by putting one data frame next to the other but the index is not accurate so R tries to fill in the gaps but it doesn't work
+```
+
+### I.3 Particular Concat behavior in R
+
+Pay attention on these examples:
+
+```{r}
+df3 # code requests to see the data frame 'df3'
+```
+
+```{r}
+df5=df3[,c('A','C','B','D')] # code creates a new data frame 'df5' and changes the column order to A, C, B, D
+df5 # code requests to see the new data frame 'df5'
+```
+
+R can  help you.
+
+```{r}
+# this is  working
+rbind(df1,df5) # code requests to vertically concatenate 'df1' and 'df5' 
+```
+
+But R can not help you here:
+
+```{r}
+df6=df5[,c('A','B','C')] # code requests to create a new data frame 'df6' with the columns A, B, and C from 'df5'
+df6 # code asks to see 'df6'
+```
+
+The df6 has one less column, then concatenation fails:
+
+```{r}
+rbind(df1,df6) # code cannot complete this request because df6 only has 3 columns and df1 has 4 columns
+```
+
+You would need to add data:
+
+```{r}
+df6$D=NA # code requests to add a D column with missing values
+rbind(df1,df6) # code requests to vertically concatenate df1 and df6 which will now work because there are the same number of columns
+```
+
+Check **cbind()**:
+
+
+```{r}
+df7=df4[1:3,] # code asks to create a new data frame 'df7' from 'df4' but only include rows 1-3
+df7 # code asks to see 'df7'
+```
+
+R can not help here, because df7 has less rows than df1:
+
+```{r}
+cbind(df1,df7) # code requests to horizontally concatenate 'df1' and 'df7' but it cannot because there are a different number of rows
+```
+
+You would need to complete the rows:
+
+```{r}
+df7[4,]=c(NA,NA,NA,NA) # code asks to create a new fourth row with missing values in order to make it work
+cbind(df1,df7) # code asks to horizontally concatenate 'df1' and 'df7' and now it works because they have the same amount of rows
+```
+
+## II. Merging
+
+While _concatenating_ results depend on column names (indices), merging actually depends on column values: the key or key columns. **KEYS** should be present in the pair of tables intended for merging. Keys columns can have different names (column nam), but values of cell should be the same.
+
+Let's use these four tables to understanding merging.
+
+```{r}
+sheet_html <- '<iframe width="50%" height="200" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS4M-N0OgCGDyCzq04ejabdpFAmSwROlibDowxH2q4dDcacLcGUkykSYDCJbCLUhxu4RDqNtTmriPbl/pubhtml?widget=true&amp;headers=false"></iframe>'
+IRdisplay::display_html(sheet_html)
+```
+
+As usual, let's open the tables from GitHub:
+
+```{r}
+link2='https://github.com/DACSS-Fundamentals/someData/raw/main/merge_example.xlsx' # code requests to import the data from this link
+
+leftX <- rio::import(link2, which = "dfX_left") # code requests to add data from the link and name it 'leftX'
+rightY <- rio::import(link2, which = "dfY_right") # code requests to add data from the link and name it 'rightY'
+leftW <- rio::import(link2, which = "dfW_left") # code requests to add data from the link and name it 'leftW'
+rightZ <- rio::import(link2, which = "dfZ_right") # code requests to add data from the link and name it 'rightZ'
+```
+
+Calling them 'left' or 'right' tables is not a must. It is just a way for us to understand the examples clearer.
+
+```{r}
+leftX # code requests to see the data frame 'leftX'
+```
+
+```{r}
+rightY # code requests to see the data frame 'rightY'
+```
+
+### II.1 INNER JOIN (default)
+
+Only common keys are kept in result:
+
+```{r}
+merge(leftX,rightY) # code requests to merge 'leftX' and 'rightY' and the data frame shows the 3 rows that have a common student_id
+```
+
+```{r}
+# merge(leftX,rightY,all=FALSE, by.x="student_id", by.y="student_id") # we could use this code if the 'student_id' columns had different names
+merge(leftX,rightY,all=FALSE, by="student_id") # code requests to merge 'leftX' and 'rightY' and let's R know that they both have the column 'student_id' with the 'by=' code
+```
+
+Let's use the **W** and **Z**
+
+```{r}
+leftW # code requests to see the 'leftW' data frame
+```
+
+```{r}
+rightZ # code requests to see the 'rightZ' data frame
+```
+
+**Obviously**, this will  work poorly:
+
+```{r}
+merge(leftW,rightZ, by.x ='student_id', by.y = 'student_number') # code requests to merge 'leftW' and 'rightZ' and even though it addresses the different names in each data frame for the same column, the values are different types so it will not work
+```
+
+Making changes:
+
+```{r}
+
+rightZ$student_number=as.character(rightZ$student_number) # code requests to change the 'rightZ' data frame value in the column 'student_number' to a character instead of a double
+
+leftW$student_id=as.character(as.numeric(gsub('"|00',"",leftW$student_id))) # code requests to remove the two zeroes in the 'student_id' column of the 'leftW' data frame 
+```
+
+```{r}
+merge(leftW,rightZ, by.x='student_id', by.y='student_number') # now the merge will work because the data types are the same and consistent
+```
+
+### II.2 LEFT JOIN
+
+Keeping all rows from left
+
+```{r}
+merge(leftX,rightY,all.x=TRUE) # code requests to merge 'leftX' and 'rightY' but to include all the rows from 'leftX' and it will include missing values
+```
+
+### II.3 RIGHT JOIN
+
+Keeping all rows from right
+
+```{r}
+merge(leftX,rightY,all.y=TRUE) # code asks to merge 'leftX' and 'rightY' and keep all the rows from 'rightY' which will include missing values
+```
+
+### II.4 OUTER JOIN
+
+No row left behind!
+
+```{r}
+merge(leftX,rightY,all=TRUE) # code requests to merge the 'leftX' and 'rightY' data frames and to keep all the rows from both data frames which will include missing values 
+```
+
+# Data Aggregating in R
+
+Let's bring some data of COVID from Brazil:
+
+```{r}
+
+linkCovid="https://github.com/DACSS-Fundamentals/someData/raw/main/brazilCovid2022.csv" # code requests to import the links to the data and name it 'linkCovid'
+
+covid=read.csv(linkCovid) # code requests to read the data and create a data frame named 'covid'
+```
+
+Now, check the data available:
+
+```{r}
+str(covid) # code requests the data values of the 'covid' data frame
+```
+
+Let's take a look:
+
+```{r}
+head(covid,20) # code requests the first twenty rows of data from the 'covid' data frame; important to think about what each row is and what the data represents: each row is a day within an epidemiological week and the number of new cases of covid or deaths
+```
+
+Let's format the dates, and get date details:
+
+** maybe an inconsequential question but why is Y for year capitalized and m and d are not? **
+
+```{r}
+covid$data=as.POSIXct(covid$data, format="%Y-%m-%d") # code requests to split the 'data' column into 3 separate columns: year, month, day
+covid$day=format(covid$data,"%d") # code requests to name the new '%d' column 'day'
+covid$year=format(covid$data,"%Y") # code requests to name the new '%Y' column 'year'
+covid$month=format(covid$data,"%m") # code requests to name the new '%m' column 'month'
+
+## see
+head(covid) # code requests to see the first six rows with the new columns
+```
+
+Let's find out about  months available:
+
+```{r}
+unique(covid$month) # code requests to see how many unique month values there are because this is new information and we can view data by month now
+```
+
+So, we have data from January to July 2022.
+Let's find out: **count of new positive cases per month**:
+
+```{r}
+sum(covid$casosNovos[covid$month=='07']) # code asks for the total number of cases in July
+```
+
+```{r}
+sum(covid$casosNovos[covid$month=='06']) # code asks for the total number of cases in June
+```
+
+```{r}
+sum(covid$casosNovos[covid$month=='05']) # code asks for the total number of cases in May
+```
+
+...
+
+```{r}
+sum(covid$casosNovos[covid$month=='01']) # code asks for the total number of cases in January
+```
+
+We use **aggregation** to simplify the previous steps:
+
+```{r}
+# sum of cases by month
+casesSumByMonth=aggregate(data=covid,casosNovos~month,sum) # code requests a new data frame that show the number of new cases per month and calling it 'casesSumByMonth'
+casesSumByMonth # code requests to see the new data frame 'casesSumByMonth'
+```
+
+**AGGREGATING** capabilities allow us to produce useful output with few code:
+
+* **The groupings**:
+
+In the last example, _month_ was the **grouping** variable. We can have more the one of those:
+
+```{r}
+# sum of cases by estado and week
+casesSumByStateAndMonth=aggregate(data=covid,casosNovos~estado + month,sum) # code requests a new data frame with the total new cases by month and state
+casesSumByStateAndMonth # code requests to see the new data frame
+```
+
+* **The function to apply**:
+
+We can have more than one function:
+
+```{r}
+# sum and mean of cases by estado and week
+casesSumAndMeanByStateAndWeek=aggregate(data=covid,casosNovos~estado + semanaEpi,
+          function(x) c(mean = mean(x), sum = sum(x) ) ) # code creates a new data frame called 'casesSumAndMeanByStateAndWeek' and uses a function to find the sum of each week and the mean of each week in two new columns
+
+
+head(casesSumAndMeanByStateAndWeek,30) # code requests to see the first 30 rows of 'casesSumAndMeanByStateAndWeek'
+```
+
+...or better:
+
+```{r}
+casesSumAndMeanByStateAndWeek=do.call(data.frame, aggregate(data=covid,casosNovos~estado + semanaEpi,
+function(x) c(mean = mean(x), sum = sum(x) ) )) # code does the same aggregation as above but uses do.call to give it a better look as a data frame
+head(casesSumAndMeanByStateAndWeek,30) # code requests to see the first 30 rows of 'casesSumAndMeanByStateAndWeek'
+```
+
+* **The variables transformed**:
+
+We can apply the function to more than one variable:
+
+```{r}
+# sum of cases and deaths by estado
+
+CasesAndDeathsByState=aggregate(data=covid,
+                                cbind(casosNovos,obitosNovos)~estado,
+                                sum) # code requests to create a new data frame and group by state but get the sum of new cases and the sum of deaths 
+
+head(CasesAndDeathsByState,30) # code requests to see the first 30 rows of 'casesAndDeathsByState'
+```
+
+* Function **according** to variable
+
+The function can vary according to variable.  In this case, using **dplyr** is needed:
+
+```{r}
+library(dplyr) # code wants to use the package 'dplyr'
+covid |>
+  group_by(month) |>
+  summarize(casosNovos_VAR = var(casosNovos),
+            casosNovos_SD = sd(casosNovos),
+            obitosNovos_Median = median(obitosNovos),
+            obitosNovos_Mean = mean(obitosNovos)) # code wants to take the data from the 'covid' data frame and group it by month then summarize it based on specific operations for different columns: variance for new cases, standard deviation for new cases, median for deaths and mean for deaths
+```
+
+# Data Resharping in R
+
+Let get some data:
+
+```{r}
+fragile = read.csv("https://github.com/DACSS-Fundamentals/someData/raw/main/fragility_severalyears.csv") # code requests to read the file and name it 'fragile'
+```
+
+A basic look:
+
+```{r}
+str(fragile) # code requests to see the data value types of the columns
+```
+
+We have data about the Index of Fragility (**Total**), and the other variables are its indicators (Cs,Es,Ps,Ss,and X1). The data is at the country level and presents the data for several years:
+
+```{r}
+# years available
+table(fragile$Year) # code requests a table of the values in the year column 
+```
+
+Take a look:
+
+```{r}
+head(fragile) # code requests the first six rows of the data frame 'fragile'
+```
+
+What **shape** does the table have? The presence of year in a column could make us think it is in a long shape.
+
+This is a LONG shape:
+
+```{r}
+head(fragile[,c('Country','Year','Total')]) # code requests to subset the 'country', 'year', and 'total' columns 
+```
+
+```{r}
+# the same as the previous, but reordered to show repeated countries
+
+fragile[,c('Country','Year','Total')] |>
+  sort_by(~ list(Country,Year)) |> head(20) # code requests a subset of the 'fragile' data with the same columns as above but wants to sort it by country and year
+```
+
+You can get a summary, which *might not be* what you want:
+
+```{r}
+summary(fragile[,c('Country','Year','Total')]) # code requests a statistical summary of the subset data with the three columns
+```
+
+If I subset the data for ONE year (2023), I get a WIDE SHAPE:
+
+```{r}
+fragile[fragile$Year==2023,] # code requests to subset the data only for the year 2023
+```
+
+You can get a summary here too, which may be what you want:
+
+```{r}
+summary(fragile[fragile$Year==2023,]) # code requests a summary of the the subset data of only the year 2023
+```
+
+A summary without filtering might not be what you want:
+
+```{r}
+summary(fragile) # code requests a statistical summary of the entire data frame 'fragile'
+```
+
+As you see, getting the stats you need requires the right shape.
+
+## From Long to Wide
+
+```{r}
+# notice you can use the data without subsetting nor filtering
+fragileWide=tidyr::pivot_wider( data=fragile[,c('Country','Year','Total')], # columns 
+                                names_from = 'Year',  # values for NEW column
+                                values_from = 'Total', # values to use
+                                names_sort=T) # sort columns
+# code requests to create a new data frame called 'fragileWide' and to use the package 'tidyr' to change the fragile data from long to wide. It starts by choosing the three columns it wants then it changes the years to the first row and takes the 'total' columns and inserts those as the values for each country and each year then tells the data to sort the columns 
+fragileWide # code requests to see the new data frame 'fragileWide'
+```
+
+Notice that for the column to be sorted properly you need to add *names_sort*.
+
+### Plotting wide
+
+The wide format is useful in several cases. In general, it looks easy.
+
+In **base R**, you can use it directly for plotting:
+
+```{r}
+boxplot(fragileWide[,-1]) # code requests a box plot without the first column since it is a character value and not doubles from the 'fragileWide' data frame
+```
+
+BUT in others such as GGPLOT, it is troublesome to use that format. You require code for each plot.
+
+```{r}
+library(ggplot2) # code requests to use the package 'ggplot2'
+base=ggplot(fragileWide) # code requests to make a 'ggplot' of 'fragileWide' 
+base+geom_boxplot(aes(x=as.ordered(2021),y=`2021`)) +
+     geom_boxplot(aes(x=as.ordered(2022),y=`2022`)) +
+     geom_boxplot(aes(x=as.ordered(2023),y=`2023`)) + labs(y='') # code requests to plot the data by year
+```
+
+## From Wide to Long
+
+Here we turn it into LONG shape.
+We have  **pivot_longer** :
+
+```{r}
+fragileLong=tidyr::pivot_longer(data=fragileWide,
+                                cols=!Country, # columns that will be LONG (here NOT country)
+                                names_to = "Year", # current columns in wide will have THIS name in LONG format
+                                values_to = "FragilityIndex") # values will have this column name
+# code requests to use 'tidyr' to go from wide to long shape, it takes data from 'fragileWide' and choose the columns that will be long and renames the column 'year' then takes the values from each country and year and names that column 'fragilityindex'
+fragileLong # code requests to see the 'fragileLong' data frame
+```
+
+### Plotting Long
+
+GGPLOT  works very well with LONG shape:
+
+```{r}
+base = ggplot(data=fragileLong) # code requests to take data from 'fragileLong' and create a ggplot
+base + geom_boxplot(aes(x=Year,y=FragilityIndex)) # code create a geom box plot with the the year and the fragility index
+```
+
+We can also use **base R**:
+
+```{r}
+boxplot(data=fragileLong,FragilityIndex~Year) # code requests to create a boxplot from the data frame 'fragileLong' and create the fragilityindex per year
+```
+
+This is another example without years.
+
+Let me keep one year, and some wide-shaped columns:
+
+```{r}
+CVars_columns=c('C1_Security_Apparatus',	'C2_Factionalized_Elites',	'C3_Group_Grievance') # code requests a data frame with the country and 3 variable columns
+
+#only one year
+fragile_CVars_wide=fragile[fragile$Year==2020,c('Country',CVars_columns)] # code requests data only for 2020 and the three columns above and to name it 'fragile_CVars_wide'
+
+fragile_CVars_wide # code requests to see the data frame
+```
+
+```{r}
+boxplot(fragile_CVars_wide[,-1],horizontal = T,las=2) # code requests to see a boxplot of the wide data without the country column 
+```
+
+Its LONG version:
+
+```{r}
+fragile_CVars_long=tidyr::pivot_longer(fragile_CVars_wide,
+                                       !Country,
+                                       names_to = "CVars_name",
+                                       values_to = "CVars_value") 
+# code requests to see the long version of the data to add a column to show which variable it is and the values
+fragile_CVars_long # code requests to see the long form of the data frame
+```
+
+```{r}
+# good for ggplot2
+base=ggplot(data=fragile_CVars_long) # code requests to see a use the package ggplot of the long data
+base+geom_boxplot(aes(x=CVars_name,y=CVars_value)) # code requests to make a geom_boxplot and works better for long format
+```
